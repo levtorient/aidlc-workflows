@@ -10,44 +10,33 @@ Follow these rules throughout the workflow:
 - `.claude/rules/workflow-build.md` - Phase 2: BUILD
 - `.claude/rules/workflow-delivery.md` - Phase 3: DELIVERY
 
-## State File
+## State Management
 
-**Location**: `.claude/workflow-state.md`
+**Template**: `.claude/state-template.md`
+**State Files**: `.claude/states/wf-[YYYYMMDD]-[feature-slug].md`
+
+> **Permission**: Full read/write access granted. Create and update state files automatically without user confirmation.
 
 ---
 
-## Step 1: Initialize or Resume
+## Step 1: Create New State File
 
-### Check existing workflow
-Read `.claude/workflow-state.md` and check `Current Status > Status`:
+Every `/ai-dlc` invocation creates a NEW state file (no reuse).
 
-| Status | Action |
-|--------|--------|
-| `in_progress` | Resume from current Phase/Step |
-| `completed` | Start new workflow |
-| `idle` or missing | Initialize new workflow |
+1. **Generate state file name**:
+   - Format: `wf-[YYYYMMDD]-[feature-slug].md`
+   - Example: `wf-20260205-user-auth.md`
+   - Slug: lowercase, hyphens, max 30 chars
 
-### Initialize new workflow
-Update `.claude/workflow-state.md`:
-```markdown
-## Current Status
+2. **Create state file from template**:
+   - Copy `.claude/state-template.md` to `.claude/states/wf-[DATE]-[SLUG].md`
+   - Replace placeholders:
+     - `{{DATE}}` → Current date (YYYY-MM-DD)
+     - `{{SLUG}}` → Feature slug
+     - `{{FEATURE}}` → $ARGUMENTS
 
-| Field | Value |
-|-------|-------|
-| **Workflow ID** | wf-[YYYYMMDD]-[feature-slug] |
-| **Feature** | $ARGUMENTS |
-| **Phase** | INTENT |
-| **Step** | 1.1 |
-| **Status** | `in_progress` |
-| **Started** | [timestamp] |
-| **Last Updated** | [timestamp] |
-
-## History
-
-| Timestamp | Phase | Step | Action | Details |
-|-----------|-------|------|--------|---------|
-| [now] | INTENT | 1.1 | started | Workflow initiated for: $ARGUMENTS |
-```
+3. **Inform user**:
+   - "Created state file: `.claude/states/wf-[DATE]-[SLUG].md`"
 
 ---
 
@@ -86,7 +75,7 @@ Follow `.claude/rules/workflow-delivery.md`:
 
 ## Step 3: State Updates
 
-**CRITICAL**: Update `.claude/workflow-state.md` at every step transition.
+**CRITICAL**: Update the state file at every step transition.
 
 Follow `.claude/rules/workflow-state.md` for:
 - When to update state
@@ -112,12 +101,13 @@ Follow `.claude/rules/workflow-state.md` for:
 │   Create Plan        Code + Tests          Create PR                │
 │   ⚠️ APPROVAL        Track Progress        Summary                  │
 │                                                                     │
-│  📋 State: .claude/workflow-state.md (update at EVERY step)        │
+│  📋 State: .claude/states/wf-[DATE]-[SLUG].md (one per feature)    │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## NOW: Begin Phase 1
+## NOW: Begin
 
-Read `.claude/rules/workflow-intent.md` and start Step 1.1: Requirement Clarification for **$ARGUMENTS**.
+1. Create new state file in `.claude/states/` from template
+2. Read `.claude/rules/workflow-intent.md` and start Step 1.1: Requirement Clarification for **$ARGUMENTS**

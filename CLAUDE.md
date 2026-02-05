@@ -18,10 +18,10 @@ This project provides a **workflow orchestrator** that coordinates specialized A
 **IMPORTANT**: When receiving a request to implement, build, create, or develop any feature or functionality, **always suggest using the workflow orchestrator**:
 
 ```
-/workflow [feature description]
+/ai-dlc [feature description]
 ```
 
-### Use `/workflow` for:
+### Use `/ai-dlc` for:
 - New feature implementation
 - Multi-file changes
 - Features requiring backend + frontend
@@ -49,7 +49,7 @@ This project provides a **workflow orchestrator** that coordinates specialized A
 ```
 .claude/
 ├── agents/           # Specialized agent definitions
-├── commands/         # Custom commands (workflow.md)
+├── commands/         # Custom commands (ai-dlc.md)
 ├── rules/            # Phase-specific workflow rules
 ├── skills/           # Domain-specific skills
 └── workflow-state.md # Runtime workflow state
@@ -92,7 +92,7 @@ All workflow progress is tracked in `.claude/workflow-state.md`:
 >
 > Would you like me to start the workflow?
 > ```
-> /workflow add user authentication with JWT
+> /ai-dlc add user authentication with JWT
 > ```
 
 Then proceed with Phase 1: INTENT to clarify requirements.

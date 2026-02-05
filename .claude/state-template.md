@@ -6,13 +6,13 @@
 
 | Field | Value |
 |-------|-------|
-| **Workflow ID** | - |
-| **Feature** | - |
-| **Phase** | - |
-| **Step** | - |
-| **Status** | `idle` |
-| **Started** | - |
-| **Last Updated** | - |
+| **Workflow ID** | wf-{{DATE}}-{{SLUG}} |
+| **Feature** | {{FEATURE}} |
+| **Phase** | INTENT |
+| **Step** | 1.1 |
+| **Status** | `in_progress` |
+| **Started** | {{DATE}} |
+| **Last Updated** | {{DATE}} |
 
 ---
 
@@ -31,6 +31,8 @@
 ### Step 1.3: Execution Plan
 - **Status**: `pending`
 - **Plan Location**: -
+- **Total Tasks**: -
+- **Parallel Groups**: -
 
 ### Step 1.4: User Approval
 - **Status**: `pending`
@@ -44,15 +46,17 @@
 
 ### Execution Plan
 
-| # | Task | Agent | Status | Notes |
-|---|------|-------|--------|-------|
-| - | - | - | - | - |
+| # | Task | Agent | Dependencies | Status | Notes |
+|---|------|-------|--------------|--------|-------|
+| - | - | - | - | - | - |
 
 ### Parallel Groups
 
-**Group A**: -
-**Group B**: -
-**Group C**: -
+**Group A** (No dependencies - START):
+- (to be defined)
+
+**Group B** (After Group A):
+- (to be defined)
 
 ### Progress
 - **Tasks Completed**: 0
@@ -66,7 +70,7 @@
 
 ### Step 3.1: Code Review
 - **Status**: `pending`
-- **Reviewer**: code-reviewer
+- **Reviewer**: -
 - **Issues Found**: -
 - **Issues Resolved**: -
 
@@ -75,6 +79,8 @@
 - **Unit Tests**: -
 - **Integration Tests**: -
 - **E2E Tests**: -
+- **Lint**: -
+- **Build**: -
 
 ### Step 3.3: PR Creation
 - **Status**: `pending`
@@ -91,7 +97,7 @@
 
 | Timestamp | Phase | Step | Action | Details |
 |-----------|-------|------|--------|---------|
-| - | - | - | - | - |
+| {{DATE}} | INTENT | 1.1 | started | Workflow initiated for: {{FEATURE}} |
 
 ---
 
@@ -99,12 +105,12 @@
 
 ### Requirements Summary
 ```
-(Captured in Step 1.1)
+(Captured during Step 1.1)
 ```
 
 ### Design Decisions
 ```
-(Captured in Step 1.2)
+(Captured during Step 1.2)
 ```
 
 ### Files Changed

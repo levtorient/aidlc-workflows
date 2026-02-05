@@ -1,9 +1,24 @@
 {
   "permissions": {
     "allow": [
+      "Edit(.claude/states/**)",
+      "Write(.claude/states/**)",
       "Bash(git ls-tree:*)",
       "Bash(dir:*)",
-      "Bash(del:*)"
+      "Bash(del:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm exec:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm install:*)",
+      "Bash(npm ls:*)",
+      "Bash(npm audit:*)",
+      "Bash(npm run start:dev:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx vite build)",
+      "Bash(timeout 10 npx vite:*)",
+      "Bash(timeout 8 npx vite:*)"
     ]
   }
 }
